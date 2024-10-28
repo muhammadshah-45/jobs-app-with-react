@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaLocationDot } from "react-icons/fa6"
+
 import logo from "../assets/logo.png"
 //components
 import Navbar from './Navbar'
@@ -13,9 +13,10 @@ const Home = () => {
 
   return (
     <>
+    {/* Navbar Section */}
       <Navbar/>
 
-      {/* <!-- Hero --> */}
+      {/* <!-- Hero Section --> */}
       <section className="bg-green-700 py-20 mb-4">
         <div
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center"
@@ -74,7 +75,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* <!-- Job Listing 1 --> */}
           
-            {all_jobs.map((singleJob,index)=> index < 3 ? <JobCard  singleJob={singleJob}/>: null
+            {all_jobs.map((singleJob,index)=> index < 3 ? <div key={singleJob.id}> <JobCard  singleJob={singleJob}/> </div> : null
             )}
             {/* 
           <!-- Job Listing 2 --> */}
