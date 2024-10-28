@@ -6,7 +6,7 @@ import logo from "../assets/logo.png"
 import Navbar from './Navbar'
 import JobCard from './JobCard'
 import all_jobs from '../assets/all_jobs'
-import Jobs from '../pages/Jobs'
+
 
 
 const Home = () => {

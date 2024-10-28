@@ -11,18 +11,23 @@ import all_jobs from '../assets/all_jobs';
 const Jobs = () => {
   const [jobData, setJobData] = useState(all_jobs);
 
+  
   const handleChangeValue = (e) => {
-    if(e.target.value !== ""){
-      const temperaryarray = jobData.filter((singleJob) => {
-        if (singleJob.title === e.target.value) {
-          return true;
-        }
+    if (e.target.value !== "") {
+      const temperaryarray = all_jobs.filter((singleJob) => {
+        return singleJob.title.includes(e.target.value);
       })
-      
       setJobData(temperaryarray)
-    }
       
+    } else {
+      setJobData(all_jobs)
+    }
+    
+
+   
   }
+
+  
 
   return (
     <>
@@ -65,8 +70,8 @@ const Jobs = () => {
           <div className="relative">
             <input
               type="text"
-              onChange={(e)=>handleChangeValue(e)}
-            
+              onChange={(e) => handleChangeValue(e)}
+
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
               placeholder="Filter jobs..."
             />
@@ -81,13 +86,15 @@ const Jobs = () => {
             Browse Jobs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
             {jobData.map((job) => {
               return (
-
+                
                 <div key={job.id}><JobCard singleJob={job} /></div>
-
+                
               )
             })}
+            { jobData.length === 0 && <p className='text-center'>No Job available yet...</p>}
           </div>
         </div>
       </section>

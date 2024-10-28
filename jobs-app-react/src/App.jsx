@@ -10,7 +10,7 @@ import JobCard from './components/JobCard'
 import Job from './pages/Job'
 import Jobs from "./pages/Jobs"
 import Add_job from './pages/Add_job'
-
+import Not_found from './pages/Not_found'
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path='/job' element={<Job />} />
           <Route path='/jobs' element={<Jobs />} />
           <Route path='/add-job' element={<Add_job />} />
+          <Route path='/not-found' element={<Not_found />}></Route>
         </Routes>
       </Router>
     </>

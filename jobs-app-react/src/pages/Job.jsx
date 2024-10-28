@@ -9,7 +9,9 @@ import Navbar from '../components/Navbar';
 const Job = () => {
   const location = useLocation();
   const {singleJob} = location.state;
-    console.log("mySingleJob",{singleJob})
+    
+
+    
   return (
     <>
      <Navbar></Navbar>
@@ -93,7 +95,7 @@ const Job = () => {
                 to="/add-job"
                 className="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
-              <button
+              <button 
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
               >
                 Delete Job
