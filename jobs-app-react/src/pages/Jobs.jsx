@@ -12,12 +12,16 @@ const Jobs = () => {
   const [jobData, setJobData] = useState(all_jobs);
 
   const handleChangeValue = (e) => {
-    const temperaryarray = jobData.filter((singleJob) => {
-      if (singleJob.title === e.target.value) {
-        return true;
-      }
-    })
-    setJobData(temperaryarray)
+    if(e.target.value !== ""){
+      const temperaryarray = jobData.filter((singleJob) => {
+        if (singleJob.title === e.target.value) {
+          return true;
+        }
+      })
+      
+      setJobData(temperaryarray)
+    }
+      
   }
 
   return (
