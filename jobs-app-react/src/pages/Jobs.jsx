@@ -15,7 +15,7 @@ const Jobs = () => {
   const handleChangeValue = (e) => {
     if (e.target.value !== "") {
       const temperaryarray = all_jobs.filter((singleJob) => {
-        return singleJob.title.includes(e.target.value);
+        return singleJob.title.toLowerCase().includes(e.target.value.toLowerCase());
       })
       setJobData(temperaryarray)
       
@@ -87,14 +87,16 @@ const Jobs = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {jobData.map((job) => {
+
+            
+            {jobData.length !== 0 ? jobData.map((job) => {
               return (
                 
                 <div key={job.id}><JobCard singleJob={job} /></div>
                 
               )
-            })}
-            { jobData.length === 0 && <p className='text-center'>No Job available yet...</p>}
+            }) : <p className='text-center'>No Job available yet...</p>} 
+            
           </div>
         </div>
       </section>

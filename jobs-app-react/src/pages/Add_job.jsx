@@ -65,8 +65,7 @@ const Add_job = () => {
 
             <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2"
-                >Job Listing Name</label
-              >
+                >Job Listing Name</label >
               <input
                 type="text"
                 id="name"
@@ -80,8 +79,7 @@ const Add_job = () => {
               <label
                 htmlFor="description"
                 className="block text-gray-700 font-bold mb-2"
-                >Description</label
-              >
+                >Description</label>
               <textarea
                 id="description"
                 name="description"
@@ -93,8 +91,7 @@ const Add_job = () => {
 
             <div className="mb-4">
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                >Salary</label
-              >
+                >Salary</label>
               <select
                 id="salary"
                 name="salary"
@@ -133,8 +130,7 @@ const Add_job = () => {
 
             <div className="mb-4">
               <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
-                >Company Name</label
-              >
+                >Company Name</label >
               <input
                 type="text"
                 id="company"
@@ -148,8 +144,7 @@ const Add_job = () => {
               <label
                 htmlFor="company_description"
                 className="block text-gray-700 font-bold mb-2"
-                >Company Description</label
-              >
+                >Company Description</label>
               <textarea
                 id="company_description"
                 name="company_description"
@@ -163,8 +158,7 @@ const Add_job = () => {
               <label
                 htmlFor="contact_email"
                 className="block text-gray-700 font-bold mb-2"
-                >Contact Email</label
-              >
+                >Contact Email</label>
               <input
                 type="email"
                 id="contact_email"
@@ -179,8 +173,7 @@ const Add_job = () => {
               <label
                 htmlFor="contact_phone"
                 className="block text-gray-700 font-bold mb-2"
-                >Contact Phone</label
-              >
+                >Contact Phone</label>
               <input
                 type="tel"
                 id="contact_phone"
@@ -193,8 +186,7 @@ const Add_job = () => {
             <div>
               <button
                 className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
-                type="submit"
-              >
+                type="submit">
                 Add Job
               </button>
             </div>
