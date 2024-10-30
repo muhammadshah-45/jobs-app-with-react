@@ -1,7 +1,27 @@
-import React from 'react'
-import { Link,NavLink } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link,NavLink, useLocation } from 'react-router-dom'
 import logo from "../assets/logo.png"
 const Add_job = () => {
+  const location = useLocation();
+  console.log("Muhamad",location)
+  const { singleJob} = location.state;
+  const [job,setJob] = useState({
+    title:"",
+    type:"",
+    location:"",
+    description:"",
+    salary:"",
+    company:{
+      name:"",
+      description:"",
+      contactEmail:"",
+      contactPhone:""
+    },
+    id:Math.random() 
+  })
+  useEffect(()=>{
+   setJob(singleJob)
+  },[])
   return (
     <>
       <nav className="bg-green-700 border-b border-green-500">
@@ -53,6 +73,7 @@ const Add_job = () => {
               <select
                 id="type"
                 name="type"
+                value={job.type}
                 className="border rounded w-full py-2 px-3"
                 required
               >
@@ -69,6 +90,7 @@ const Add_job = () => {
               <input
                 type="text"
                 id="name"
+                value={job.title}
                 name="name"
                 className="border rounded w-full py-2 px-3 mb-2"
                 placeholder="eg. Beautiful Apartment In Miami"
@@ -82,6 +104,7 @@ const Add_job = () => {
                 >Description</label>
               <textarea
                 id="description"
+                value={job.description}
                 name="description"
                 className="border rounded w-full py-2 px-3"
                 rows="4"
@@ -95,6 +118,7 @@ const Add_job = () => {
               <select
                 id="salary"
                 name="salary"
+                value={job.salary}
                 className="border rounded w-full py-2 px-3"
                 required
               >
@@ -118,6 +142,7 @@ const Add_job = () => {
               </label>
               <input
                 type="text"
+                value={job.location}
                 id="location"
                 name="location"
                 className="border rounded w-full py-2 px-3 mb-2"
@@ -134,6 +159,7 @@ const Add_job = () => {
               <input
                 type="text"
                 id="company"
+                value={job.company.name}
                 name="company"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Company Name"
@@ -148,6 +174,7 @@ const Add_job = () => {
               <textarea
                 id="company_description"
                 name="company_description"
+                value={job.company.description}
                 className="border rounded w-full py-2 px-3"
                 rows="4"
                 placeholder="What does your company do?"
@@ -162,6 +189,7 @@ const Add_job = () => {
               <input
                 type="email"
                 id="contact_email"
+                value={job.company.contactEmail}
                 name="contact_email"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Email address for applicants"
@@ -178,6 +206,7 @@ const Add_job = () => {
                 type="tel"
                 id="contact_phone"
                 name="contact_phone"
+                value={job.company.contactPhone}
                 className="border rounded w-full py-2 px-3"
                 placeholder="Optional phone for applicants"
               />

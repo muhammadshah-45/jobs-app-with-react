@@ -36,7 +36,7 @@ const Job = () => {
             <div
               className="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
             >
-              <div className="text-gray-500 mb-4">{singleJob.type}</div>
+              <div  className="text-gray-500 mb-4">{singleJob.type}</div>
               <h1 className="text-3xl font-bold mb-4">{singleJob.title}</h1>
               <div
                 className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
@@ -92,7 +92,7 @@ const Job = () => {
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-xl font-bold mb-6">Manage Job</h3>
               <Link
-                to="/add-job"
+                to="/add-job" state={{singleJob}}
                 className="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
               <button 

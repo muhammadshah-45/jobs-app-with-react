@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from "axios"
 import logo from "../assets/logo.png"
 //components
 import Navbar from './Navbar'
@@ -10,6 +10,20 @@ import all_jobs from '../assets/all_jobs'
 
 
 const Home = () => {
+
+  const getJobs = async ()=>{
+    try {
+      let response = await axios.get("http://localhost:5000/jobs")
+      console.log(response)
+    } catch (error) {
+      console.log("getJob API Error",error)
+    }
+
+  }
+
+  useEffect(()=>{
+  getJobs()
+  },[])
 
   return (
     <>
