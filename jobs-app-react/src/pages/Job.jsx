@@ -2,16 +2,13 @@ import React from 'react'
 import { FaArrowLeft ,FaLocationDot} from "react-icons/fa6";
 import { Link, useLocation} from 'react-router-dom';
 
-import logo from "../assets/logo.png"
 //components
 import Navbar from '../components/Navbar';
 
 const Job = () => {
   const location = useLocation();
   const {singleJob} = location.state;
-    
-
-    
+        
   return (
     <>
      <Navbar></Navbar>

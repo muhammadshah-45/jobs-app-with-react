@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios"
-import logo from "../assets/logo.png"
 //components
 import Navbar from './Navbar'
 import JobCard from './JobCard'
-import all_jobs from '../assets/all_jobs'
-
 
 
 const Home = () => {
-
+  const [data,setData] = useState([])
+  console.log(data)
   const getJobs = async ()=>{
     try {
-      let response = await axios.get("http://localhost:5000/jobs")
+      let response = await axios.get("http://localhost:5000/jobs");
+      setData(response.data)
       console.log(response)
     } catch (error) {
       console.log("getJob API Error",error)
@@ -89,7 +88,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* <!-- Job Listing 1 --> */}
           
-            {all_jobs.map((singleJob,index)=> index < 3 ? <div key={singleJob.id}> <JobCard  singleJob={singleJob}/> </div> : null
+            {data.map((singleJob,index)=> index < 3 ? <div key={singleJob.id}> <JobCard  singleJob={singleJob}/> </div> : null
             )}
             {/* 
           <!-- Job Listing 2 --> */}

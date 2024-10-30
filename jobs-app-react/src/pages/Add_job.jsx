@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link,NavLink, useLocation } from 'react-router-dom'
 import logo from "../assets/logo.png"
+
 const Add_job = () => {
   const location = useLocation();
   console.log("Muhamad",location)
   const { singleJob} = location.state;
+
+  
   const [job,setJob] = useState({
     title:"",
     type:"",

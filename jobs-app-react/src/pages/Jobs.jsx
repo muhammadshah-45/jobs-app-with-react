@@ -1,26 +1,40 @@
-import React, { useState } from 'react'
-
-import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
+import axios from 'axios';
 //logo
 import logo from "../assets/logo.png"
 //component
 import JobCard from '../components/JobCard';
-import Navbar from '../components/Navbar'
-import all_jobs from '../assets/all_jobs';
-const Jobs = () => {
-  const [jobData, setJobData] = useState(all_jobs);
 
+
+const Jobs = () => {
+  const [jobData, setJobData] = useState([]);
+  const [allJobs,setAllJobs] = useState([])
+
+  console.log("jobData",jobData)
+  console.log("allJobs",allJobs)
+  const getJobs = async ()=> {
+    try {
+      let response =await axios.get("http://localhost:5000/jobs");
+      setJobData(response.data)
+      setAllJobs(response.data)
+    } catch (error) {
+      console.log("Jobs page Error",error)
+    }
+  }
   
+  useEffect(()=>{
+    getJobs()
+  },[])
   const handleChangeValue = (e) => {
     if (e.target.value !== "") {
-      const temperaryarray = all_jobs.filter((singleJob) => {
+      const temperaryarray = jobData.filter((singleJob) => {
         return singleJob.title.toLowerCase().includes(e.target.value.toLowerCase());
       })
       setJobData(temperaryarray)
       
     } else {
-      setJobData(all_jobs)
+      setJobData(allJobs)
     }
     
 
