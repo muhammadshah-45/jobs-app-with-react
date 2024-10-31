@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import logo from "../assets/logo.png"
+import axios from 'axios';
 
 const Add_job = () => {
   const location = useLocation();
@@ -92,6 +93,17 @@ const Add_job = () => {
 
     }
 
+
+  }
+
+  const  handleSubmit = async (event)=>{
+    event.preventDefault();
+    try {
+      let response = await axios.post("http://localhost:5000/jobs",job)
+      console.log(response)
+    } catch (error) {
+      console.log("addJobError",error)
+    }
   }
 
 
@@ -137,7 +149,7 @@ const Add_job = () => {
           <div
             className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
           >
-            <form>
+            <form onSubmit={handleSubmit}>
               <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
 
               <div className="mb-4">
@@ -299,7 +311,7 @@ const Add_job = () => {
               <div>
                 <button
                   className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
-                  type="submit">
+                  type="submit" >
                   Add Job
                 </button>
               </div>
