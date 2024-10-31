@@ -8,12 +8,12 @@ import JobCard from './JobCard'
 
 const Home = () => {
   const [data,setData] = useState([])
-  console.log(data)
+
   const getJobs = async ()=>{
     try {
       let response = await axios.get("http://localhost:5000/jobs");
       setData(response.data)
-      console.log(response)
+   
     } catch (error) {
       console.log("getJob API Error",error)
     }

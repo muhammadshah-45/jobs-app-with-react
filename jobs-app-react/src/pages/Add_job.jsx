@@ -4,9 +4,20 @@ import logo from "../assets/logo.png"
 
 const Add_job = () => {
   const location = useLocation();
-  console.log("Muhamad",location)
-  const { singleJob} = location.state;
+  
+  // const singleJob =location? location.state ? location.state.singleJob : null:null;
+  // const singleJob=location?.state?.singleJob
+// if(location){
+//   if(location.state){
+//     singleJob=location.state.singleJob
+//   }
+// }
+//All of these above from line 8 to 14  are equivalent in working
+ const singleJob = location?.state?.singleJob;
 
+ 
+
+  
   
   const [job,setJob] = useState({
     title:"",
@@ -23,7 +34,10 @@ const Add_job = () => {
     id:Math.random() 
   })
   useEffect(()=>{
-   setJob(singleJob)
+    if(singleJob !== null && singleJob !== undefined){
+      setJob(singleJob)
+
+    }
   },[])
   return (
     <>
@@ -50,7 +64,7 @@ const Add_job = () => {
                     className="text-white hover:bg-green-900 hover:text-white rounded-md px-3 py-2"
                   >Jobs</Link>
                   <Link
-                    to="/add-job"
+                    to="/add-job" state={{singleJob}}
                     className="text-white bg-green-900 hover:bg-gray-900 hover:text-white  rounded-md px-3 py-2"
                   >Add Job</Link>
                   
@@ -79,6 +93,7 @@ const Add_job = () => {
                 value={job.type}
                 className="border rounded w-full py-2 px-3"
                 required
+            
               >
                 <option value="Full-Time">Full-Time</option>
                 <option value="Part-Time">Part-Time</option>
@@ -95,6 +110,7 @@ const Add_job = () => {
                 id="name"
                 value={job.title}
                 name="name"
+                readOnly
                 className="border rounded w-full py-2 px-3 mb-2"
                 placeholder="eg. Beautiful Apartment In Miami"
                 required

@@ -11,8 +11,6 @@ const Jobs = () => {
   const [jobData, setJobData] = useState([]);
   const [allJobs,setAllJobs] = useState([])
 
-  console.log("jobData",jobData)
-  console.log("allJobs",allJobs)
   const getJobs = async ()=> {
     try {
       let response =await axios.get("http://localhost:5000/jobs");
