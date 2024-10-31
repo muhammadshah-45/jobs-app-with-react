@@ -4,11 +4,21 @@ import { Link, useLocation} from 'react-router-dom';
 
 //components
 import Navbar from '../components/Navbar';
+import axios from 'axios';
 
 const Job = () => {
   const location = useLocation();
   const {singleJob} = location.state;
-        
+
+  const handleDeleteJob = async ()=>{
+    try {
+      let response = await axios.delete(`http://localhost:5000/jobs/${singleJob.id}`)
+      console.log("Delete Job api call")
+    } catch (error) {
+      console.log("Delete Job Error",error)
+    }
+  }
+
   return (
     <>
      <Navbar></Navbar>
@@ -92,7 +102,7 @@ const Job = () => {
                 to="/add-job" state={{singleJob}}
                 className="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
-              <button 
+              <button onClick={handleDeleteJob}
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
               >
                 Delete Job

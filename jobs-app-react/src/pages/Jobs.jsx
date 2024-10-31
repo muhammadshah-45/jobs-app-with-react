@@ -26,7 +26,7 @@ const Jobs = () => {
   },[])
   const handleChangeValue = (e) => {
     if (e.target.value !== "") {
-      const temperaryarray = jobData.filter((singleJob) => {
+      const temperaryarray = allJobs.filter((singleJob) => {
         return singleJob.title.toLowerCase().includes(e.target.value.toLowerCase());
       })
       setJobData(temperaryarray)
