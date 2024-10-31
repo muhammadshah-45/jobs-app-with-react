@@ -99,8 +99,14 @@ const Add_job = () => {
   const  handleSubmit = async (event)=>{
     event.preventDefault();
     try {
-      let response = await axios.post("http://localhost:5000/jobs",job)
-      console.log(response)
+      if(singleJob){
+        let response = await axios.put(`http://localhost:5000/jobs/${singleJob.id}`,job)
+        console.log("Update api call")
+      } else{
+        let response = await axios.post("http://localhost:5000/jobs",job)
+        console.log("post api call")
+      }
+     
     } catch (error) {
       console.log("addJobError",error)
     }
